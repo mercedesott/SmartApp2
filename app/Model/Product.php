@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property Measure $Measure
  * @property Brand $Brand
+ * @property Image $Image
  * @property Barcode $Barcode
  * @property Label $Label
  * @property Promotion $Promotion
@@ -114,6 +115,13 @@ class Product extends AppModel {
 		'Brand' => array(
 			'className' => 'Brand',
 			'foreignKey' => 'brand_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Image' => array(
+			'className' => 'Image',
+			'foreignKey' => 'image_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

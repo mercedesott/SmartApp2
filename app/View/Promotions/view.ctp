@@ -41,9 +41,14 @@
 			<?php echo h($promotion['Promotion']['description']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Price'); ?></dt>
+		<dt><?php echo __('New Price'); ?></dt>
 		<dd>
-			<?php echo h($promotion['Promotion']['price']); ?>
+			<?php echo h($promotion['Promotion']['new_price']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Old Price'); ?></dt>
+		<dd>
+			<?php echo h($promotion['Promotion']['old_price']); ?>
 			&nbsp;
 		</dd>
 	</dl>

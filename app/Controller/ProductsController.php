@@ -17,6 +17,38 @@ class ProductsController extends AppController {
 		$this->set('products', $this->paginate());
 	}
 
+	public function search(){
+		
+		$products = $this->paginate(array("Product.name LIKE "=> "%".$this->request->data['Product']['search']."%"));
+               $this->set('products', $products);
+               $this->render('index');
+		//$condiciones= array("Product.name LIKE" => "%".$this->request->data['Product']['search']."%");			
+		//$products = $this->Product->find($condiciones);
+		
+		//$productos = $this->Product->find('all', array("name LIKE"=>"%".$this->request->data['Product']['search']."%"));
+		
+		//$productos = $this->Product->paginate('Product', array('Product.name LIKE'=>'%'.$this->request->data['Product']['search'].'%'));
+		//$productos= $this->Product->search($this->data['Product']['search']);
+		
+		//$this->set('products', $productos);
+		//$this->render('/products/index');
+		//$this->render('index');
+	}
+
+	public function autocompletar(){
+		//para ver que tiene la variable adentro
+		//var_dump($this->request);	
+		
+		//tuve que poner request porque le tengo que pedir y poner query porque ahi estaba mandando el term que es lo que viene despues
+		//del ? en la url y ahi dice ?term=algo ahi puedo sacar el algo
+		$products = $this->paginate(array("Product.name LIKE "=> "%".$this->request->query['term']."%"));
+		//con el autoRender (que esta siempre en true) lo pongo en falso y no me busca la vista equivalente a esta accion
+		//lo pongo asi porque no quiero que abra una vista, porque no existe, quiero que se quede en la misma pagina
+		$this->autoRender=false;
+		//con esto genero el json
+		echo json_encode($products);
+	}
+
 /**
  * view method
  *
@@ -49,7 +81,8 @@ class ProductsController extends AppController {
 		}
 		$measures = $this->Product->Measure->find('list');
 		$brands = $this->Product->Brand->find('list');
-		$this->set(compact('measures', 'brands'));
+		$images = $this->Product->Image->find('list');
+		$this->set(compact('measures', 'brands', 'images'));
 	}
 
 /**
@@ -76,7 +109,8 @@ class ProductsController extends AppController {
 		}
 		$measures = $this->Product->Measure->find('list');
 		$brands = $this->Product->Brand->find('list');
-		$this->set(compact('measures', 'brands'));
+		$images = $this->Product->Image->find('list');
+		$this->set(compact('measures', 'brands', 'images'));
 	}
 
 /**

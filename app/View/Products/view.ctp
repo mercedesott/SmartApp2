@@ -16,9 +16,10 @@
 			<?php echo $this->Html->link($product['Brand']['name'], array('controller' => 'brands', 'action' => 'view', $product['Brand']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Image Id'); ?></dt>
+		<dt><?php echo __('Image'); ?></dt>
 		<dd>
-			<?php echo h($product['Product']['image_id']); ?>
+			<!-- <?php echo $this->Html->link($product['Image']['link'], array('controller' => 'images', 'action' => 'view', $product['Image']['id'])); ?> -->
+			<?php echo $this->Html->image($product['Image']['link'], array('alt' => 'Producto')); ?>			
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
@@ -64,6 +65,8 @@
 		<li><?php echo $this->Html->link(__('New Measure'), array('controller' => 'measures', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Brands'), array('controller' => 'brands', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Brand'), array('controller' => 'brands', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Images'), array('controller' => 'images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Image'), array('controller' => 'images', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Barcodes'), array('controller' => 'barcodes', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Barcode'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Labels'), array('controller' => 'labels', 'action' => 'index')); ?> </li>

@@ -10,7 +10,8 @@
 			<th><?php echo $this->Paginator->sort('start_time'); ?></th>
 			<th><?php echo $this->Paginator->sort('finish_time'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
-			<th><?php echo $this->Paginator->sort('price'); ?></th>
+			<th><?php echo $this->Paginator->sort('new_price'); ?></th>
+			<th><?php echo $this->Paginator->sort('old_price'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
@@ -26,7 +27,8 @@
 		<td><?php echo h($promotion['Promotion']['start_time']); ?>&nbsp;</td>
 		<td><?php echo h($promotion['Promotion']['finish_time']); ?>&nbsp;</td>
 		<td><?php echo h($promotion['Promotion']['description']); ?>&nbsp;</td>
-		<td><?php echo h($promotion['Promotion']['price']); ?>&nbsp;</td>
+		<td><?php echo h($promotion['Promotion']['new_price']); ?>&nbsp;</td>
+		<td><?php echo h($promotion['Promotion']['old_price']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $promotion['Promotion']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $promotion['Promotion']['id'])); ?>

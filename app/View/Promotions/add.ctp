@@ -10,7 +10,8 @@
 		echo $this->Form->input('start_time');
 		echo $this->Form->input('finish_time');
 		echo $this->Form->input('description');
-		echo $this->Form->input('price');
+		echo $this->Form->input('new_price');
+		echo $this->Form->input('old_price');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

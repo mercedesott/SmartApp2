@@ -32,4 +32,20 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	
+	public $components = array(
+	'Session',
+	'Auth' => array(
+		'loginRedirect' => array('controller' => 'products', 'action' => 'index'),
+		'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+		)
+	);
+	
+	public function beforeFilter() {
+		//si quiero dejar que gente sin loguearse pueda acceder a algo
+		//$this->Auth->allow('index', 'view');
+		$this->Auth->allow('login');
+		$this->set('user',$this->Auth->user());
+		//$this->Auth->allow('add');
+	}
 }

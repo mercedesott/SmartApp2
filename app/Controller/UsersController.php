@@ -16,6 +16,14 @@ class UsersController extends AppController {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		//si quiero que alguien pueda acceder sin loguearse a algo
+		//$this->Auth->allow('add', 'logout');
+		$this->Auth->allow('login');
+		//$this->Auth->allow('add');
+	}
 
 /**
  * view method
@@ -99,5 +107,19 @@ class UsersController extends AppController {
 		}
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	public function login() {
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				$this->redirect($this->Auth->redirect());
+			} else {
+				$this->Session->setFlash(__('Nombre de usuario o contrasenia invalida'));
+			}
+		}
+	}
+	
+	public function logout() {
+		$this->redirect($this->Auth->logout());
 	}
 }
