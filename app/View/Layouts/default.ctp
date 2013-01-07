@@ -30,10 +30,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('products');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		
+		echo $this->Html->script('jquery-1.8.2');
+		echo $this->Html->script('jquery-ui-1.9.1.custom.min');
+		echo $this->Html->css('ui-lightness/jquery-ui-1.9.1.custom.min');
 	?>
 </head>
 <body>
@@ -51,12 +56,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-			<?php echo $this->Html->link(
+			<!-- <?php echo $this->Html->link(
 					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
 					'http://www.cakephp.org/',
 					array('target' => '_blank', 'escape' => false)
 				);
-			?>
+			?> -->
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

@@ -14,7 +14,7 @@ class User extends AppModel {
  * @var string
  */
 	public $displayField = 'username';
-
+	
 /**
  * Validation rules
  *

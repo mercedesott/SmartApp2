@@ -37,7 +37,8 @@ class AppController extends Controller {
 	'Session',
 	'Auth' => array(
 		'loginRedirect' => array('controller' => 'products', 'action' => 'index'),
-		'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+		'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+		'authorize' => array('Controller')
 		)
 	);
 	
@@ -46,6 +47,17 @@ class AppController extends Controller {
 		//$this->Auth->allow('index', 'view');
 		$this->Auth->allow('login');
 		$this->set('user',$this->Auth->user());
+		//$this->Auth->authorize= array('Controller');
+		
 		//$this->Auth->allow('add');
+	}
+	
+	public function isAuthorized($user) {
+		//Admin puede acceder a todas las acciones
+		if (isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			return true;
+		}
+		//Default deny
+		return false;
 	}
 }

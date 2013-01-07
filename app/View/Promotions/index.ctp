@@ -1,5 +1,40 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+	//jquery usa id para referenciar igual que en css
+	$("#search").autocomplete({
+            minLength: 0,
+            source: "promotions/autocompletar",
+            
+            focus: function(event, ui) {
+                $("#search").val( ui.item.Product.name);
+                return false;
+            },
+            
+            select: function(event, ui) {
+            	//window.location.replace('products/view/'+ ui.item.Product.id);
+            	
+            	window.location.replace('promotions/view/'+ ui.item.Promotion.id);
+ 
+                return false;
+         }
+            })
+            
+            //la funcion data itera sobre el resultado del autocomplete y a cada iteracion le llama item
+        .data( "autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+                .data( "item.autocomplete", item )
+                .append( "<a>" + item.Product.name + "<br>" + item.Product.id + "</a>" )
+                .appendTo( ul );
+        };
+      })
+</script>
 <div class="promotions index">
 	<h2><?php echo __('Promotions'); ?></h2>
+	
+	<?php echo $this->Form->create('Product', array('action'=>'search')); ?>
+	<?php echo $this->Form->input('search', array('id'=>'search')); ?>
+	<?php echo $this->Form->end('Buscar'); ?>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
