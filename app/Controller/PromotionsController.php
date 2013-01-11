@@ -25,17 +25,8 @@ class PromotionsController extends AppController {
 	}
 	
 		public function autocompletar(){
-		//para ver que tiene la variable adentro
-		//var_dump($this->request);	
-		
-		//tuve que poner request porque le tengo que pedir y poner query porque ahi estaba mandando el term que es lo que viene despues
-		//del ? en la url y ahi dice ?term=algo ahi puedo sacar el algo
 		$products = $this->paginate(array("Product.name LIKE "=> "%".$this->request->query['term']."%"));
-		//con el autoRender (que esta siempre en true) lo pongo en falso y no me busca la vista equivalente a esta accion
-		//lo pongo asi porque no quiero que abra una vista, porque no existe, quiero que se quede en la misma pagina
-		//var_dump($products);
 		$this->autoRender=false;
-		//con esto genero el json
 		echo json_encode($products);
 	}
 
@@ -121,5 +112,20 @@ class PromotionsController extends AppController {
 		}
 		$this->Session->setFlash(__('Promotion was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	public function verpromo($id = null) {
+		//$this->Promotion->recursive = 0;
+		
+		//$promotions = $this->Promotion->find('all', array('conditions' => array('Promotion.product_id' => $id)));
+		//var_dump($promotions);
+		// $this->Promotion->Product->id = $id;
+		// if (!$this->Promotion->exists()) {
+			// throw new NotFoundException(__('Invalid promotion'));
+		// }
+		$this->set('promotions', $this->paginate('Promotion', array('Promotion.product_id' => $id)));
+		//$this->set('promotions', $promotions->paginate());
+		//$promotions->set('promotions', $this->paginate());
+		//$this->set('promotions', $promotions);
 	}
 }

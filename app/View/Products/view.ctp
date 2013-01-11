@@ -53,6 +53,8 @@
 			&nbsp;
 		</dd>
 	</dl>
+	<br />
+	<?php echo $this->Html->link(__('Ver ofertas de este producto'), array('controller' => 'promotions', 'action' => 'verpromo', $product['Product']['id'])); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
