@@ -128,4 +128,8 @@ class PromotionsController extends AppController {
 		//$promotions->set('promotions', $this->paginate());
 		//$this->set('promotions', $promotions);
 	}
+	
+	public function report() {
+		
+	}
 }

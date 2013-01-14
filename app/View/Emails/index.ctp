@@ -48,5 +48,6 @@
 		<li><?php echo $this->Html->link(__('New Email'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Branches'), array('controller' => 'branches', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Branch'), array('controller' => 'branches', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Products'), array('controller' => 'products', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
