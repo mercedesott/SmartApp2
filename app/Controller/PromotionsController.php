@@ -115,21 +115,19 @@ class PromotionsController extends AppController {
 	}
 
 	public function verpromo($id = null) {
-		//$this->Promotion->recursive = 0;
-		
-		//$promotions = $this->Promotion->find('all', array('conditions' => array('Promotion.product_id' => $id)));
-		//var_dump($promotions);
-		// $this->Promotion->Product->id = $id;
-		// if (!$this->Promotion->exists()) {
-			// throw new NotFoundException(__('Invalid promotion'));
-		// }
 		$this->set('promotions', $this->paginate('Promotion', array('Promotion.product_id' => $id)));
-		//$this->set('promotions', $promotions->paginate());
-		//$promotions->set('promotions', $this->paginate());
-		//$this->set('promotions', $promotions);
+		$this->render('index');
 	}
 	
 	public function report() {
-		
+		if ($this->request->is('post')) {
+			//var_dump($this->request->data);
+			//$promotions = $this->paginate(array("Promotion.start_date >= " => $this->request->data['Promotion']['start_date']."AND Promotion.start_date <=" => $this->request->data['Promotion']['finish_date']));
+			$start_date = $this->request->data['Promotion']['start_date']['year'].'-'.$this->request->data['Promotion']['start_date']['month'].'-'.$this->request->data['Promotion']['start_date']['day'];
+			$finish_date = $this->request->data['Promotion']['finish_date']['year'].'-'.$this->request->data['Promotion']['finish_date']['month'].'-'.$this->request->data['Promotion']['finish_date']['day'];
+			$promotions = $this->paginate(array("Promotion.start_date >= " => $start_date, "Promotion.start_date <=" => $finish_date));
+			$this->set('promotions', $promotions);
+			$this->render('index');
+		}
 	}
 }
