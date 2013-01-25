@@ -127,7 +127,34 @@ class PromotionsController extends AppController {
 			$finish_date = $this->request->data['Promotion']['finish_date']['year'].'-'.$this->request->data['Promotion']['finish_date']['month'].'-'.$this->request->data['Promotion']['finish_date']['day'];
 			$promotions = $this->paginate(array("Promotion.start_date >= " => $start_date, "Promotion.start_date <=" => $finish_date));
 			$this->set('promotions', $promotions);
-			$this->render('index');
+			$this->set('start_date', $start_date);
+			$this->set('finish_date', $finish_date);
+			$this->render('makeReport');
+			
+			//$this->layout = 'pdf'; //this will use the pdf.ctp layout
+			//$this->render('view_pdf');
+			
+			//this layout pdf y dp en la view pdf itero con la variable promotions
+			//le hago this render view_pdf
 		}
+	}
+	
+	function makeReport() {
+		
+	}
+	
+	function viewPdf() {
+		if ($this->request->is('post')) {
+			//var_dump($this->request->data);
+			$start_date = $this->request->data['Promotion']['start_date'];
+			$finish_date = $this->request->data['Promotion']['finish_date'];
+			//$promotions = $this->paginate(array("Promotion.start_date >= " => $start_date, "Promotion.start_date <=" => $finish_date));
+			$promotions = $this->Promotion->find('all', array('conditions' => array("Promotion.start_date >= " => $start_date, "Promotion.start_date <=" => $finish_date)));
+		
+			$this->set('promotions', $promotions);
+			//var_dump($promotions);
+		}
+		$this->layout = 'pdf'; //this will use the pdf.ctp layout
+		$this->render();
 	}
 }

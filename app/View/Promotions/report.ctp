@@ -5,7 +5,7 @@
 	<h3><?php echo __('Elija las fechas para generar el reporte'); ?></h3>
 	<?php echo $this->Form->input('start_date'); ?>
 	<?php echo $this->Form->input('finish_date'); ?>
-	<?php echo $this->Form->end('Generar Reporte'); ?>
+	<?php echo $this->Form->end('Ver Promociones'); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
