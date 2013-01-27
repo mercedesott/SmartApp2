@@ -1,5 +1,5 @@
 <div class="barcodes index">
-	<h2><?php echo __('Barcodes'); ?></h2>
+	<h2><?php echo __('Codigos de Barra'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>

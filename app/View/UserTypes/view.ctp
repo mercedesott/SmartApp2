@@ -1,5 +1,5 @@
 <div class="userTypes view">
-<h2><?php  echo __('User Type'); ?></h2>
+<h2><?php  echo __('Tipo de Usuario'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

@@ -1,5 +1,5 @@
 <div class="promotions view">
-<h2><?php  echo __('Promotion'); ?></h2>
+<h2><?php  echo __('Promocion'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

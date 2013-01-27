@@ -1,7 +1,7 @@
 <div class="userTypes form">
 <?php echo $this->Form->create('UserType'); ?>
 	<fieldset>
-		<legend><?php echo __('Add User Type'); ?></legend>
+		<legend><?php echo __('Agregar Tipo de Usuario'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
 	?>

@@ -19,12 +19,26 @@ $tcpdf->AddPage();
 // example:  
 
 $tcpdf->SetTextColor(0, 0, 0); 
-$tcpdf->SetFont($textfont,'B',14); 
+$tcpdf->SetFont($textfont,'',10); 
 //$tcpdf->Cell(0,14, "Hello World", 0,1,'L');
 
 
+	$tbl_header = '<table>
+						<tr>
+							<th style= "font-weight:bold";>Producto</th>
+							<th style= "font-weight:bold";>Fecha de Inicio</th>
+							<th style= "font-weight:bold";>Fecha de Fin</th>
+							<th style= "font-weight:bold";>Hora de Inicio</th>
+							<th style= "font-weight:bold";>Hora de Fin</th>
+							<th style= "font-weight:bold";>Descripcion</th>
+							<th style= "font-weight:bold";>Precio Promocion</th>
+							<th style= "font-weight:bold";>Precio Original</th>
+						</tr>';
+	$tbl_footer = '</table>';
+	$tbl = '';
+
 foreach ($promotions as $promotion):
-	$id = $promotion['Promotion']['id'];
+	//$id = $promotion['Promotion']['id'];
 	$product = $promotion['Product']['name'];
 	$start_date = $promotion['Promotion']['start_date'];
 	$finish_date = $promotion['Promotion']['finish_date'];
@@ -33,9 +47,27 @@ foreach ($promotions as $promotion):
 	$description = $promotion['Promotion']['description'];
 	$new_price = $promotion['Promotion']['new_price'];
 	$old_price = $promotion['Promotion']['old_price'];
-	$tcpdf->Cell(0,14, $id.'-'.$product.'-'.$start_date.'-'.$finish_date.'-'.$start_time.'-'.$finish_time.'-'.$description.'-'.$new_price.'-'.$old_price, 0,1,'L');
+	//$tcpdf->Cell(0,14, $id.'-'.$product.'-'.$start_date.'-'.$finish_date.'-'.$start_time.'-'.$finish_time.'-'.$description.'-'.$new_price.'-'.$old_price, 0,1,'L');
+
+
+
+	// foreach item in your array...
+	$tbl .= '
+    	<tr>
+        	<td>'.$product.'</td>
+        	<td>'.$start_date.'</td>
+        	<td>'.$finish_date.'</td>
+        	<td>'.$start_time.'</td>
+        	<td>'.$finish_time.'</td>
+        	<td>'.$description.'</td>
+        	<td>'.$new_price.'</td>
+        	<td>'.$old_price.'</td>
+    	</tr>
+	';
 
 endforeach;
+
+$tcpdf->writeHTML($tbl_header . $tbl . $tbl_footer, true, false, false, false, 'C');
 
 // ... 
 // etc. 

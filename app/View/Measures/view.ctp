@@ -1,5 +1,5 @@
 <div class="measures view">
-<h2><?php  echo __('Measure'); ?></h2>
+<h2><?php  echo __('Medida'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

@@ -1,5 +1,5 @@
 <div class="positions view">
-<h2><?php  echo __('Position'); ?></h2>
+<h2><?php  echo __('Posicion'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

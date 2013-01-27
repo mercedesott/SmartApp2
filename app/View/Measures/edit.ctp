@@ -1,7 +1,7 @@
 <div class="measures form">
 <?php echo $this->Form->create('Measure'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Measure'); ?></legend>
+		<legend><?php echo __('Editar Medida'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('type');

@@ -1,7 +1,7 @@
 <div class="images form">
 <?php echo $this->Form->create('Image', array('type' => 'file')); ?>
 	<fieldset>
-		<legend><?php echo __('Add Image'); ?></legend>
+		<legend><?php echo __('Agregar Imagen'); ?></legend>
 	<?php
 		echo $this->Form->input('link', array('type' => 'file'));
 	?>

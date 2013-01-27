@@ -1,7 +1,7 @@
 <div class="shelves form">
 <?php echo $this->Form->create('Shelf'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Shelf'); ?></legend>
+		<legend><?php echo __('Editar Estante'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('description');

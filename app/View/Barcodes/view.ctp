@@ -1,5 +1,5 @@
 <div class="barcodes view">
-<h2><?php  echo __('Barcode'); ?></h2>
+<h2><?php  echo __('Codigo de Barra'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

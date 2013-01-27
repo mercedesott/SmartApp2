@@ -29,7 +29,7 @@
       })
 </script>
 <div class="labels index">
-	<h2><?php echo __('Labels'); ?></h2>
+	<h2><?php echo __('Etiquetas'); ?></h2>
 	
 	<?php echo $this->Form->create('Product', array('action'=>'search')); ?>
 	<?php echo $this->Form->input('search', array('id'=>'search')); ?>

@@ -1,7 +1,7 @@
 <div class="emails form">
 <?php echo $this->Form->create('Email'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Email'); ?></legend>
+		<legend><?php echo __('Agregar Email'); ?></legend>
 	<?php
 		echo $this->Form->input('branch_id');
 		echo $this->Form->input('email');

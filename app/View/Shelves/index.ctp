@@ -1,5 +1,5 @@
 <div class="shelves index">
-	<h2><?php echo __('Shelves'); ?></h2>
+	<h2><?php echo __('Estantes'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>

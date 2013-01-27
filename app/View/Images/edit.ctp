@@ -1,7 +1,7 @@
 <div class="images form">
 <?php echo $this->Form->create('Image'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Image'); ?></legend>
+		<legend><?php echo __('Editar Imagen'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('link');

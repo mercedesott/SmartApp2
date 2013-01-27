@@ -1,7 +1,7 @@
 <div class="branches form">
 <?php echo $this->Form->create('Branch'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Branch'); ?></legend>
+		<legend><?php echo __('Editar Sucursal'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');

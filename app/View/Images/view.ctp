@@ -1,5 +1,5 @@
 <div class="images view">
-<h2><?php  echo __('Image'); ?></h2>
+<h2><?php  echo __('Imagen'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

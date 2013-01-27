@@ -1,5 +1,5 @@
 <div class="labels view">
-<h2><?php  echo __('Label'); ?></h2>
+<h2><?php  echo __('Etiqueta'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

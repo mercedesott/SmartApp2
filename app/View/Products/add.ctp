@@ -1,7 +1,7 @@
 <div class="products form">
 <?php echo $this->Form->create('Product'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Product'); ?></legend>
+		<legend><?php echo __('Agregar Producto'); ?></legend>
 	<?php
 		echo $this->Form->input('measure_id');
 		echo $this->Form->input('brand_id');

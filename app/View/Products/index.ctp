@@ -44,7 +44,7 @@
       //Product es el key del array, por eso lo tengo que poner
 </script>
 <div class="products index">
-	<h2><?php echo __('Products'); ?></h2>
+	<h2><?php echo __('Productos'); ?></h2>
 	
 	<?php echo $this->Form->create('Product', array('action'=>'search')); ?>
 	<?php echo $this->Form->input('search', array('id'=>'search')); ?>

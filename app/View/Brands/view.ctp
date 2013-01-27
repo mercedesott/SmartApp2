@@ -1,5 +1,5 @@
 <div class="brands view">
-<h2><?php  echo __('Brand'); ?></h2>
+<h2><?php  echo __('Marca'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

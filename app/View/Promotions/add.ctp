@@ -1,10 +1,10 @@
 <div class="promotions form">
 <?php echo $this->Form->create('Promotion'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Promotion'); ?></legend>
+		<legend><?php echo __('Agregar Promocion'); ?></legend>
 	<?php
 		echo $this->Form->input('product_id');
-		echo $this->Form->input('active');
+		//echo $this->Form->input('active');
 		echo $this->Form->input('start_date');
 		echo $this->Form->input('finish_date');
 		echo $this->Form->input('start_time');

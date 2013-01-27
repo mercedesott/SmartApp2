@@ -1,7 +1,7 @@
 <div class="aisles form">
 <?php echo $this->Form->create('Aisle'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Aisle'); ?></legend>
+		<legend><?php echo __('Editar Gondola'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('description');

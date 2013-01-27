@@ -1,7 +1,7 @@
 <div class="brands form">
 <?php echo $this->Form->create('Brand'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Brand'); ?></legend>
+		<legend><?php echo __('Agregar Marca'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
 	?>

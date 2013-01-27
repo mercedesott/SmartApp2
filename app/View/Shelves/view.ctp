@@ -1,5 +1,5 @@
 <div class="shelves view">
-<h2><?php  echo __('Shelf'); ?></h2>
+<h2><?php  echo __('Estante'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

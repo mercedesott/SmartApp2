@@ -1,5 +1,5 @@
 <div class="aisles view">
-<h2><?php  echo __('Aisle'); ?></h2>
+<h2><?php  echo __('Gondola'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

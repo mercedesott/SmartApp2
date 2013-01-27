@@ -1,5 +1,5 @@
 <div class="branches view">
-<h2><?php  echo __('Branch'); ?></h2>
+<h2><?php  echo __('Sucursal'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

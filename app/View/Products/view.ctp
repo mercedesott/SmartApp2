@@ -1,5 +1,5 @@
 <div class="products view">
-<h2><?php  echo __('Product'); ?></h2>
+<h2><?php  echo __('Producto'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

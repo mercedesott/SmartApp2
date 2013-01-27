@@ -1,5 +1,5 @@
 <div class="promotions index">
-	<h2><?php echo __('Promociones'); ?></h2>
+	<h2><?php echo __('Promociones Pendientes'); ?></h2>
 
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -52,11 +52,6 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-	
-	<?php echo $this->Form->create('Promotion', array('action' => 'viewPdf')); ?>
-	<?php echo $this->Form->hidden('start_date', array('value' => $start_date)); ?>
-	<?php echo $this->Form->hidden('finish_date', array('value' => $finish_date)); ?>
-	<?php echo $this->Form->end('Generar Reporte'); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

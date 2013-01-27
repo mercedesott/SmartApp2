@@ -1,7 +1,7 @@
 <div class="labels form">
 <?php echo $this->Form->create('Label'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Label'); ?></legend>
+		<legend><?php echo __('Agregar Etiqueta'); ?></legend>
 	<?php
 		echo $this->Form->input('position_id');
 		echo $this->Form->input('shelf_id');

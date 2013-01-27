@@ -1,7 +1,7 @@
 <div class="promotions form">
 <?php echo $this->Form->create('Promotion'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Promotion'); ?></legend>
+		<legend><?php echo __('Editar Promocion'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('product_id');

@@ -1,7 +1,7 @@
 <div class="barcodes form">
 <?php echo $this->Form->create('Barcode'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Barcode'); ?></legend>
+		<legend><?php echo __('Agregar Codigo de Barra'); ?></legend>
 	<?php
 		echo $this->Form->input('number');
 		echo $this->Form->input('product_id');
