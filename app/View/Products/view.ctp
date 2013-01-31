@@ -6,48 +6,48 @@
 			<?php echo h($product['Product']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Measure'); ?></dt>
+		<dt><?php echo __('Medida'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($product['Measure']['type'], array('controller' => 'measures', 'action' => 'view', $product['Measure']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Brand'); ?></dt>
+		<dt><?php echo __('Marca'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($product['Brand']['name'], array('controller' => 'brands', 'action' => 'view', $product['Brand']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Image'); ?></dt>
+		<dt><?php echo __('Imagen'); ?></dt>
 		<dd>
 			<!-- <?php echo $this->Html->link($product['Image']['link'], array('controller' => 'images', 'action' => 'view', $product['Image']['id'])); ?> -->
 			<?php echo $this->Html->image($product['Image']['link'], array('alt' => 'Producto', 'class' => 'product-image')); ?>			
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Number'); ?></dt>
+		<dt><?php echo __('Numero'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['number']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Quantity'); ?></dt>
+		<dt><?php echo __('Cantidad'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['quantity']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Description'); ?></dt>
+		<dt><?php echo __('Descripcion'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['description']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Featured'); ?></dt>
+		<dt><?php echo __('Destacado'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['featured']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Price'); ?></dt>
+		<dt><?php echo __('Precio'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['price']); ?>
 			&nbsp;
@@ -57,35 +57,35 @@
 	<?php echo $this->Html->link(__('Ver ofertas de este producto'), array('controller' => 'promotions', 'action' => 'verpromo', $product['Product']['id'])); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Menu'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Product'), array('action' => 'edit', $product['Product']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Product'), array('action' => 'delete', $product['Product']['id']), null, __('Are you sure you want to delete # %s?', $product['Product']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Products'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Product'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Measures'), array('controller' => 'measures', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Measure'), array('controller' => 'measures', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Brands'), array('controller' => 'brands', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Brand'), array('controller' => 'brands', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Images'), array('controller' => 'images', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Image'), array('controller' => 'images', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Barcodes'), array('controller' => 'barcodes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Barcode'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Labels'), array('controller' => 'labels', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Label'), array('controller' => 'labels', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Promotions'), array('controller' => 'promotions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Promotion'), array('controller' => 'promotions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Producto'), array('action' => 'edit', $product['Product']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Producto'), array('action' => 'delete', $product['Product']['id']), null, __('Are you sure you want to delete # %s?', $product['Product']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Productos'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Medidas'), array('controller' => 'measures', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Medida'), array('controller' => 'measures', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Marcas'), array('controller' => 'brands', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Marca'), array('controller' => 'brands', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Imagenes'), array('controller' => 'images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Imagen'), array('controller' => 'images', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Codigos de Barra'), array('controller' => 'barcodes', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Codigo de Barra'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Etiquetas'), array('controller' => 'labels', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Etiqueta'), array('controller' => 'labels', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Promociones'), array('controller' => 'promotions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Promocion'), array('controller' => 'promotions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Barcodes'); ?></h3>
+	<h3><?php echo __('Codigos de Barra Relacionados'); ?></h3>
 	<?php if (!empty($product['Barcode'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Number'); ?></th>
-		<th><?php echo __('Product Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th><?php echo __('Numero'); ?></th>
+		<th><?php echo __('Producto'); ?></th>
+		<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -95,9 +95,9 @@
 			<td><?php echo $barcode['number']; ?></td>
 			<td><?php echo $barcode['product_id']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'barcodes', 'action' => 'view', $barcode['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'barcodes', 'action' => 'edit', $barcode['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'barcodes', 'action' => 'delete', $barcode['id']), null, __('Are you sure you want to delete # %s?', $barcode['id'])); ?>
+				<?php echo $this->Html->link(__('Ver'), array('controller' => 'barcodes', 'action' => 'view', $barcode['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'barcodes', 'action' => 'edit', $barcode['id'])); ?>
+				<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'barcodes', 'action' => 'delete', $barcode['id']), null, __('Are you sure you want to delete # %s?', $barcode['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -106,24 +106,24 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Barcode'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Nuevo Codigo de Barra'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Labels'); ?></h3>
+	<h3><?php echo __('Etiquetas Relacionadas'); ?></h3>
 	<?php if (!empty($product['Label'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Position Id'); ?></th>
-		<th><?php echo __('Shelf Id'); ?></th>
-		<th><?php echo __('Product Id'); ?></th>
-		<th><?php echo __('Aisle Id'); ?></th>
-		<th><?php echo __('Address'); ?></th>
-		<th><?php echo __('Number'); ?></th>
+		<th><?php echo __('Id Posicion'); ?></th>
+		<th><?php echo __('Id Estante'); ?></th>
+		<th><?php echo __('Id Producto'); ?></th>
+		<th><?php echo __('Id Gondola'); ?></th>
+		<th><?php echo __('Direccion'); ?></th>
+		<th><?php echo __('Numero'); ?></th>
 		<th><?php echo __('Alive'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -138,9 +138,9 @@
 			<td><?php echo $label['number']; ?></td>
 			<td><?php echo $label['alive']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'labels', 'action' => 'view', $label['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'labels', 'action' => 'edit', $label['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'labels', 'action' => 'delete', $label['id']), null, __('Are you sure you want to delete # %s?', $label['id'])); ?>
+				<?php echo $this->Html->link(__('Ver'), array('controller' => 'labels', 'action' => 'view', $label['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'labels', 'action' => 'edit', $label['id'])); ?>
+				<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'labels', 'action' => 'delete', $label['id']), null, __('Are you sure you want to delete # %s?', $label['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -149,25 +149,25 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Label'), array('controller' => 'labels', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Nueva Etiqueta'), array('controller' => 'labels', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Promotions'); ?></h3>
+	<h3><?php echo __('Promociones Relacionadas'); ?></h3>
 	<?php if (!empty($product['Promotion'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Product Id'); ?></th>
-		<th><?php echo __('Active'); ?></th>
-		<th><?php echo __('Start Date'); ?></th>
-		<th><?php echo __('Finish Date'); ?></th>
-		<th><?php echo __('Start Time'); ?></th>
-		<th><?php echo __('Finish Time'); ?></th>
-		<th><?php echo __('Description'); ?></th>
-		<th><?php echo __('Price'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th><?php echo __('Id Producto'); ?></th>
+		<th><?php echo __('Activa'); ?></th>
+		<th><?php echo __('Fecha de inicio'); ?></th>
+		<th><?php echo __('Fecha de fin'); ?></th>
+		<th><?php echo __('Hora de inicio'); ?></th>
+		<th><?php echo __('Hora de fin'); ?></th>
+		<th><?php echo __('Descripcion'); ?></th>
+		<th><?php echo __('Precio'); ?></th>
+		<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -183,9 +183,9 @@
 			<td><?php echo $promotion['description']; ?></td>
 			<td><?php echo $promotion['price']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'promotions', 'action' => 'view', $promotion['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'promotions', 'action' => 'edit', $promotion['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'promotions', 'action' => 'delete', $promotion['id']), null, __('Are you sure you want to delete # %s?', $promotion['id'])); ?>
+				<?php echo $this->Html->link(__('Ver'), array('controller' => 'promotions', 'action' => 'view', $promotion['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'promotions', 'action' => 'edit', $promotion['id'])); ?>
+				<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'promotions', 'action' => 'delete', $promotion['id']), null, __('Are you sure you want to delete # %s?', $promotion['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -194,7 +194,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Promotion'), array('controller' => 'promotions', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Nueva Promocion'), array('controller' => 'promotions', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

@@ -3,29 +3,29 @@
 	<fieldset>
 		<legend><?php echo __('Agregar Etiqueta'); ?></legend>
 	<?php
-		echo $this->Form->input('position_id');
-		echo $this->Form->input('shelf_id');
-		echo $this->Form->input('product_id');
-		echo $this->Form->input('aisle_id');
-		echo $this->Form->input('address');
-		echo $this->Form->input('number');
+		echo $this->Form->input('position_id', array('label' => 'Posicion'));
+		echo $this->Form->input('shelf_id', array('label' => 'Estante'));
+		echo $this->Form->input('product_id', array('label' => 'Producto'));
+		echo $this->Form->input('aisle_id', array('label' => 'Gondola'));
+		echo $this->Form->input('address', array('label' => 'Direccion'));
+		echo $this->Form->input('number', array('label' => 'Numero'));
 		echo $this->Form->input('alive');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Ingresar')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Menu'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Labels'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Positions'), array('controller' => 'positions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Shelves'), array('controller' => 'shelves', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Shelf'), array('controller' => 'shelves', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Products'), array('controller' => 'products', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Product'), array('controller' => 'products', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Aisles'), array('controller' => 'aisles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Aisle'), array('controller' => 'aisles', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Etiquetas'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Posiciones'), array('controller' => 'positions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Posicion'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Estantes'), array('controller' => 'shelves', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Estante'), array('controller' => 'shelves', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Productos'), array('controller' => 'products', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Gondolas'), array('controller' => 'aisles', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Gondola'), array('controller' => 'aisles', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -4,8 +4,8 @@
 	<fieldset>
 		<legend><?php echo __('Ingrese su usuario y contrasenia'); ?></legend>
 		<?php
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
+		echo $this->Form->input('username', array('label' => 'Usuario'));
+		echo $this->Form->input('password', array('label' => 'Contrasena'));
 		?>
 	</fieldset>
 	<?php echo $this->Form->end(__('Login')); ?>

@@ -6,12 +6,12 @@
 			<?php echo h($barcode['Barcode']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Number'); ?></dt>
+		<dt><?php echo __('Numero'); ?></dt>
 		<dd>
 			<?php echo h($barcode['Barcode']['number']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Product'); ?></dt>
+		<dt><?php echo __('Producto'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($barcode['Product']['name'], array('controller' => 'products', 'action' => 'view', $barcode['Product']['id'])); ?>
 			&nbsp;
@@ -19,13 +19,13 @@
 	</dl>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Menu'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Barcode'), array('action' => 'edit', $barcode['Barcode']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Barcode'), array('action' => 'delete', $barcode['Barcode']['id']), null, __('Are you sure you want to delete # %s?', $barcode['Barcode']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Barcodes'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Barcode'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Products'), array('controller' => 'products', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Product'), array('controller' => 'products', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Codigo de Barra'), array('action' => 'edit', $barcode['Barcode']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Codigo de Barra'), array('action' => 'delete', $barcode['Barcode']['id']), null, __('Are you sure you want to delete # %s?', $barcode['Barcode']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Codigos de Barra'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Codigo de Barra'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Productos'), array('controller' => 'products', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

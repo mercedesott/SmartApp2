@@ -3,17 +3,17 @@
 	<fieldset>
 		<legend><?php echo __('Agregar Sucursal'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('label' => 'Nombre'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Ingresar')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Menu'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Branches'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Emails'), array('controller' => 'emails', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Email'), array('controller' => 'emails', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Sucursales'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Emails'), array('controller' => 'emails', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Email'), array('controller' => 'emails', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
