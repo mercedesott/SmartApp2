@@ -1,16 +1,29 @@
 <?php 
 App::import('Vendor','xtcpdf');  
-$tcpdf = new XTCPDF(); 
+// create new PDF document
+$tcpdf = new XTCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false); 
 $textfont = 'freesans'; // looks better, finer, and more condensed than 'dejavusans' 
 
+// set document information
 $tcpdf->SetAuthor("SmartApp- Mercedes Ott, Elisa Peirano, Nicolas Saiz, Constanza Trigo"); 
-$tcpdf->SetAutoPageBreak( true ); 
+$tcpdf->SetCreator(PDF_CREATOR);
+$tcpdf->SetTitle('Reporte de Promociones');
+
+// set default header and footer data 
+$tcpdf->SetHeaderData('', '', 'Reporte de Promociones', '');
 $tcpdf->setHeaderFont(array($textfont,'',40)); 
 $tcpdf->xheadercolor = array(150,0,0); 
 $tcpdf->xheadertext = 'Reporte de Promociones'; 
+//$tcpdf->xheadertext = '';
 $tcpdf->xfootertext = 'Copyright SmartApp. All rights reserved.';
-	
 
+//set margins
+$tcpdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$tcpdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$tcpdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+//set auto page breaks
+$tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // add a page (required with recent versions of tcpdf) 
 $tcpdf->AddPage(); 
