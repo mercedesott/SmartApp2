@@ -53,9 +53,11 @@ class AppController extends Controller {
 	}
 	
 	public function isAuthorized($user) {
+		if (isset($user['active']) && $user['active'] == true) {
 		//Admin puede acceder a todas las acciones
-		if (isset($user['user_type_id']) && $user['user_type_id'] === '1') {
-			return true;
+			//if (isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+				return true;
+			//}
 		}
 		//Default deny
 		return false;

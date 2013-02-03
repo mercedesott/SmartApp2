@@ -112,7 +112,17 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				$this->redirect($this->Auth->redirect());
+				$user=$this->Auth->user();
+				if($user["user_type_id"] == 1){
+					$this->redirect($this->Auth->redirect());	
+				} else if($user['user_type_id'] == 2){
+					$this->redirect(array('controller' => 'Promotions', 'action' => 'pending'));
+				} else if($user['user_type_id'] == 3){
+					$this->redirect(array('controller' => 'Promotions', 'action' => 'index'));
+				} else if($user['user_type_id'] == 4){
+					$this->redirect(array('controller' => 'Labels', 'action' => 'index'));
+				}
+				
 			} else {
 				$this->Session->setFlash(__('Nombre de usuario o contrasenia invalida'));
 			}
