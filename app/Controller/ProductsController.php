@@ -136,4 +136,15 @@ class ProductsController extends AppController {
 		$this->Session->setFlash(__('Product was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	public function isAuthorized($user) {
+		if (isset($user['active']) && $user['active'] == true) {
+		//Reponedor puede acceder a todas las acciones que tengan que ver con las etiquetas y su asignacion con productos
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '3' && ($this->action != 'add') && ($this->action != 'edit') && ($this->action != 'delete')) {
+				return true;
+			}
+		}
+		//Default deny
+		return parent::isAuthorized($user);
+	}
 }

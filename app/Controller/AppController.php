@@ -46,6 +46,7 @@ class AppController extends Controller {
 		//si quiero dejar que gente sin loguearse pueda acceder a algo
 		//$this->Auth->allow('index', 'view');
 		$this->Auth->allow('login');
+		$this->Auth->allow('logout');
 		$this->set('user',$this->Auth->user());
 		//$this->Auth->authorize= array('Controller');
 		
@@ -55,9 +56,9 @@ class AppController extends Controller {
 	public function isAuthorized($user) {
 		if (isset($user['active']) && $user['active'] == true) {
 		//Admin puede acceder a todas las acciones
-			//if (isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '1') {
 				return true;
-			//}
+			}
 		}
 		//Default deny
 		return false;

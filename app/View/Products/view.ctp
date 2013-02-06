@@ -59,25 +59,51 @@
 <div class="actions">
 	<h3><?php echo __('Menu'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Editar Producto'), array('action' => 'edit', $product['Product']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Eliminar Producto'), array('action' => 'delete', $product['Product']['id']), null, __('Are you sure you want to delete # %s?', $product['Product']['id'])); ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Editar Producto'), array('action' => 'edit', $product['Product']['id'])); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Form->postLink(__('Eliminar Producto'), array('action' => 'delete', $product['Product']['id']), null, __('Are you sure you want to delete # %s?', $product['Product']['id'])); 
+		} ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Productos'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listar Medidas'), array('controller' => 'measures', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nueva Medida'), array('controller' => 'measures', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listar Marcas'), array('controller' => 'brands', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nueva Marca'), array('controller' => 'brands', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listar Imagenes'), array('controller' => 'images', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nueva Imagen'), array('controller' => 'images', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listar Codigos de Barra'), array('controller' => 'barcodes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Codigo de Barra'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listar Etiquetas'), array('controller' => 'labels', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nueva Etiqueta'), array('controller' => 'labels', 'action' => 'add')); ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Nuevo Producto'), array('action' => 'add')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Listar Medidas'), array('controller' => 'measures', 'action' => 'index')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Nueva Medida'), array('controller' => 'measures', 'action' => 'add')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Listar Marcas'), array('controller' => 'brands', 'action' => 'index')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Nueva Marca'), array('controller' => 'brands', 'action' => 'add')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Listar Imagenes'), array('controller' => 'images', 'action' => 'index')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Nueva Imagen'), array('controller' => 'images', 'action' => 'add')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Listar Codigos de Barra'), array('controller' => 'barcodes', 'action' => 'index')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Nuevo Codigo de Barra'), array('controller' => 'barcodes', 'action' => 'add')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Listar Etiquetas'), array('controller' => 'labels', 'action' => 'index')); 
+		} ?> </li>
+		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+			echo $this->Html->link(__('Nueva Etiqueta'), array('controller' => 'labels', 'action' => 'add')); 
+		} ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Promociones'), array('controller' => 'promotions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nueva Promocion'), array('controller' => 'promotions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
+<!-- <div class="related">
 	<h3><?php echo __('Codigos de Barra Relacionados'); ?></h3>
 	<?php if (!empty($product['Barcode'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -109,8 +135,8 @@
 			<li><?php echo $this->Html->link(__('Nuevo Codigo de Barra'), array('controller' => 'barcodes', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
-<div class="related">
+</div> -->
+<!-- <div class="related">
 	<h3><?php echo __('Etiquetas Relacionadas'); ?></h3>
 	<?php if (!empty($product['Label'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -152,8 +178,8 @@
 			<li><?php echo $this->Html->link(__('Nueva Etiqueta'), array('controller' => 'labels', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
-<div class="related">
+</div> -->
+<!-- <div class="related">
 	<h3><?php echo __('Promociones Relacionadas'); ?></h3>
 	<?php if (!empty($product['Promotion'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -197,4 +223,4 @@
 			<li><?php echo $this->Html->link(__('Nueva Promocion'), array('controller' => 'promotions', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div> -->

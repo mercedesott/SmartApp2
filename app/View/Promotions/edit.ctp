@@ -25,5 +25,6 @@
 		<li><?php echo $this->Html->link(__('Listar Promociones'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Productos'), array('controller' => 'products', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Promociones Pendientes'), array('action' => 'pending')); ?></li>
 	</ul>
 </div>

@@ -96,4 +96,15 @@ class ShelvesController extends AppController {
 		$this->Session->setFlash(__('Shelf was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	public function isAuthorized($user) {
+		if (isset($user['active']) && $user['active'] == true) {
+		//Reponedor puede acceder a todas las acciones que tengan que ver con los estantes
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '4') {
+				return true;
+			}
+		}
+		//Default deny
+		return false;
+	}
 }

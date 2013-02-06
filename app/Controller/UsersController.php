@@ -113,14 +113,18 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				$user=$this->Auth->user();
-				if($user["user_type_id"] == 1){
-					$this->redirect($this->Auth->redirect());	
-				} else if($user['user_type_id'] == 2){
-					$this->redirect(array('controller' => 'Promotions', 'action' => 'pending'));
-				} else if($user['user_type_id'] == 3){
-					$this->redirect(array('controller' => 'Promotions', 'action' => 'index'));
-				} else if($user['user_type_id'] == 4){
-					$this->redirect(array('controller' => 'Labels', 'action' => 'index'));
+				if (isset($user['active']) && $user['active'] == true) {
+					if($user["user_type_id"] == 1){
+						$this->redirect($this->Auth->redirect());	
+					} else if($user['user_type_id'] == 2){
+						$this->redirect(array('controller' => 'Promotions', 'action' => 'pending'));
+					} else if($user['user_type_id'] == 3){
+						$this->redirect(array('controller' => 'Promotions', 'action' => 'index'));
+					} else if($user['user_type_id'] == 4){
+						$this->redirect(array('controller' => 'Labels', 'action' => 'index'));
+					}
+				} else {
+					$this->redirect($this->Auth->logout());
 				}
 				
 			} else {

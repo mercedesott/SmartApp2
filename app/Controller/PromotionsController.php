@@ -72,6 +72,7 @@ class PromotionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//if(isset($user['user_type_id']) && ($user['user_type_id'] === '1' || $user['user_type_id'] === '2')) {
 		$this->Promotion->id = $id;
 		if (!$this->Promotion->exists()) {
 			throw new NotFoundException(__('Invalid promotion'));
@@ -88,6 +89,9 @@ class PromotionsController extends AppController {
 		}
 		$products = $this->Promotion->Product->find('list');
 		$this->set(compact('products'));
+		//} else {
+			//$this->redirect(array('action' => 'index'));
+		//}
 	}
 
 /**
@@ -162,5 +166,19 @@ class PromotionsController extends AppController {
 		$promotions = $this->paginate(array("Promotion.active = '0'"));
 		$this->set('promotions', $promotions);
 		$this->render();
+	}
+	
+	public function isAuthorized($user) {
+		if (isset($user['active']) && $user['active'] == true) {
+		//Reponedor puede acceder a todas las acciones que tengan que ver con las etiquetas y su asignacion con productos
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '3' && ($this->action != 'edit') && ($this->action != 'pending')) {
+				return true;
+			}
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '2' && ($this->action != 'report') && ($this->action != 'make_report') && ($this->action != 'viewPdf')) {
+				return true;
+			}
+		}
+		//Default deny
+		return parent::isAuthorized($user);
 	}
 }
