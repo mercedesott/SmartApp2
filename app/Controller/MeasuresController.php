@@ -96,4 +96,15 @@ class MeasuresController extends AppController {
 		$this->Session->setFlash(__('Measure was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	public function isAuthorized($user) {
+		if (isset($user['active']) && $user['active'] == true) {
+		//Reponedor puede acceder a todas las acciones que tengan que ver con las etiquetas y su asignacion con productos
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '2') {
+				return true;
+			}
+		}
+		//Default deny
+		return parent::isAuthorized($user);
+	}
 }

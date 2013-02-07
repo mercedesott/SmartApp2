@@ -24,7 +24,7 @@
 		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
+<!-- <div class="related">
 	<h3><?php echo __('Productos Relacionados'); ?></h3>
 	<?php if (!empty($brand['Product'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -70,4 +70,4 @@
 			<li><?php echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div> -->

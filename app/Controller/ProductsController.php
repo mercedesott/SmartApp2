@@ -143,6 +143,9 @@ class ProductsController extends AppController {
 			if (isset($user['user_type_id']) && $user['user_type_id'] === '3' && ($this->action != 'add') && ($this->action != 'edit') && ($this->action != 'delete')) {
 				return true;
 			}
+			if (isset($user['user_type_id']) && $user['user_type_id'] === '2') {
+				return true;
+			}
 		}
 		//Default deny
 		return parent::isAuthorized($user);

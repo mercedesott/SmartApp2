@@ -22,10 +22,10 @@
 
 		<li><?php echo $this->Html->link(__('Listar Promociones'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Productos'), array('controller' => 'products', 'action' => 'index')); ?> </li>
-		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+		<li><?php if(isset($user['user_type_id']) && (($user['user_type_id'] === '1') || ($user['user_type_id'] === '2'))) {
 			echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); 
 		} ?> </li>
-		<li><?php if(isset($user['user_type_id']) && $user['user_type_id'] === '1') {
+		<li><?php if(isset($user['user_type_id']) && (($user['user_type_id'] === '1') || ($user['user_type_id'] === '2'))) {
 			echo $this->Html->link(__('Promociones Pendientes'), array('action' => 'pending')); 
 			} ?></li>
 	</ul>

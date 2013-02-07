@@ -24,7 +24,7 @@
 		<li><?php echo $this->Html->link(__('Nuevo Producto'), array('controller' => 'products', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-	<div class="related">
+	<!-- <div class="related">
 		<h3><?php echo __('Productos Relacionados'); ?></h3>
 	<?php if (!empty($image['Product'])): ?>
 		<dl>
@@ -75,5 +75,5 @@
 				<li><?php echo $this->Html->link(__('Editar Producto'), array('controller' => 'products', 'action' => 'edit', $image['Product']['id'])); ?></li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 	
