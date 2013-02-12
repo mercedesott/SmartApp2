@@ -12,6 +12,9 @@ class ProductsController extends AppController {
  *
  * @return void
  */
+ 
+ var $uses = array('Product', 'Brand', 'Measure', 'Image');
+ 
 	public function index() {
 		$this->Product->recursive = 0;
 		$this->set('products', $this->paginate());
@@ -150,4 +153,130 @@ class ProductsController extends AppController {
 		//Default deny
 		return parent::isAuthorized($user);
 	}
+	
+	public function externalAdd() {
+		$parametros = $this->request->data;
+		$medext = $parametros['measure'];
+		$marext = $parametros['brand'];
+		$imaext = $parametros['image'];
+		$nomext = $parametros['name'];
+		$numext = $parametros['number'];
+		$canext = $parametros['quantity'];
+		$desext = $parametros['description'];
+		$feaext = $parametros['featured'];
+		$preext = $parametros['price'];
+		
+		$measure = $this->Measure->find('first', array('conditions' => array("Measure.type" => $medext)));
+		$brand = $this->Brand->find('first', array('conditions' => array("Brand.name" => $marext)));
+		$image = $this->Image->find('first', array('conditions' => array("Image.link" => $imaext)));		
+		if($measure == NULL) {
+			$measure = new Measure();
+			$measure->type=$medext;
+			$this->Measure->save($measure);
+			$measure_id = $this->Measure->id;
+		}else{
+			
+			$measure_id = $measure['Measure']['id'];
+		}
+		if($brand == NULL) {
+			$brand = new Brand();
+			$brand->name=$marext;
+			$this->Brand->save($brand);
+			$brand_id = $this->Brand->id;
+		}else{
+			$brand_id = $brand['Brand']['id'];
+		}
+		if($image == NULL) {
+			$image = new Image();
+			$image->link=$imaext;
+			$this->Image->save($image);
+			$image_id = $this->Image->id;
+		}else{
+			$image_id = $image['Image']['id'];
+		}
+		
+		
+		$product = new Product();
+		$product->measure_id = $measure_id;
+		$product->brand_id = $brand_id;
+		$product->image_id = $image_id;
+		$product->name = $nomext;
+		$product->number = $numext;
+		$product->quantity = $canext;
+		$product->description =  $desext;
+		$product->featured = $feaext;
+		$product->price = $preext;
+		
+		$this->Product->save($product);
+	}
+
+	public function externalEdit() {
+		$parametros = $this->request->data;
+		
+		$medext = $parametros['measure'];
+		$marext = $parametros['brand'];
+		$imaext = $parametros['image'];
+		$nomext = $parametros['name'];
+		$numext = $parametros['number'];
+		$canext = $parametros['quantity'];
+		$desext = $parametros['description'];
+		$feaext = $parametros['featured'];
+		$preext = $parametros['price'];
+		
+		//var_dump($medext.$marext.$imaext);
+
+		
+		$measure = $this->Measure->find('first', array('conditions' => array("Measure.type" => $medext)));
+		$brand = $this->Brand->find('first', array('conditions' => array("Brand.name" => $marext)));
+		$image = $this->Image->find('first', array('conditions' => array("Image.link" => $imaext)));
+		
+		//var_dump($measure.$brand.$image.$nomext.$numext.$canext.$desext.$feaext.$preext);		
+
+		if($measure == NULL) {
+			$measure = new Measure();
+			$measure->type=$medext;
+			$this->Measure->save($measure);
+			$measure_id = $this->Measure->id;
+		}else{
+			
+			$measure_id = $measure['Measure']['id'];
+		}
+		if($brand == NULL) {
+			$brand = new Brand();
+			$brand->name=$marext;
+			$this->Brand->save($brand);
+			$brand_id = $this->Brand->id;
+		}else{
+			$brand_id = $brand['Brand']['id'];
+		}
+		if($image == NULL) {
+			$image = new Image();
+			$image->link=$imaext;
+			$this->Image->save($image);
+			$image_id = $this->Image->id;
+		}else{
+			$image_id = $image['Image']['id'];
+		}
+		
+		
+		$product = $this->Product->find('first', array('conditions' => array("Product.measure_id" => $measure_id, "Product.brand_id" => $brand_id, "Product.name" => $nomext, "Product.quantity" => $canext)));
+		
+		//$product->measure_id = $measure_id;
+		//$product->brand_id = $brand_id;
+		$this->Product->id = $product['Product']['id'];
+		$this->Product->saveField('image_id', $image_id);
+		// $product->image_id = $image_id;		$this->Product->saveField('number',$numext);
+		$this->Product->saveField('description',$desext);
+		$this->Product->saveField('featured',$feaext);
+		$this->Product->saveField('price',$preext);
+		//$product->name = $nomext;
+		// $product->number = $numext;
+		// //$product->quantity = $canext;
+		// $product->description =  $desext;
+		// $product->featured = $feaext;
+		// $product->price = $preext;
+// 		
+		// $this->Product->save($product);
+	}
+
 }

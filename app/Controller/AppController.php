@@ -47,6 +47,8 @@ class AppController extends Controller {
 		//$this->Auth->allow('index', 'view');
 		$this->Auth->allow('login');
 		$this->Auth->allow('logout');
+		$this->Auth->allow('externalAdd');
+		$this->Auth->allow('externalEdit');
 		$this->set('user',$this->Auth->user());
 		//$this->Auth->authorize= array('Controller');
 		
