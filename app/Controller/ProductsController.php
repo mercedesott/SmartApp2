@@ -279,4 +279,35 @@ class ProductsController extends AppController {
 		// $this->Product->save($product);
 	}
 
+	public function externalDelete() {
+		$parametros = $this->request->data;
+		
+		$medext = $parametros['measure'];
+		$marext = $parametros['brand'];
+		$imaext = $parametros['image'];
+		$nomext = $parametros['name'];
+		$numext = $parametros['number'];
+		$canext = $parametros['quantity'];
+		$desext = $parametros['description'];
+		$feaext = $parametros['featured'];
+		$preext = $parametros['price'];
+		
+		//var_dump($medext.$marext.$imaext);
+		
+		$measure = $this->Measure->find('first', array('conditions' => array("Measure.type" => $medext)));
+		$brand = $this->Brand->find('first', array('conditions' => array("Brand.name" => $marext)));
+		$image = $this->Image->find('first', array('conditions' => array("Image.link" => $imaext)));
+		
+		//var_dump($measure.$brand.$image.$nomext.$numext.$canext.$desext.$feaext.$preext);		
+		$measure_id = $measure['Measure']['id'];
+		$brand_id = $brand['Brand']['id'];
+		$image_id = $image['Image']['id'];
+				
+		$product = $this->Product->find('first', array('conditions' => array("Product.measure_id" => $measure_id, "Product.brand_id" => $brand_id, "Product.name" => $nomext, "Product.quantity" => $canext)));
+		
+		$this->Product->id = $product['Product']['id'];
+		$this->Product->delete();
+		
+	}
+
 }
