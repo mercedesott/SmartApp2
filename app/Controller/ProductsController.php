@@ -13,7 +13,7 @@ class ProductsController extends AppController {
  * @return void
  */
  
- var $uses = array('Product', 'Brand', 'Measure', 'Image');
+ var $uses = array('Product', 'Brand', 'Measure', 'Image', 'Label', 'Barcode');
  
 	public function index() {
 		$this->Product->recursive = 0;
@@ -102,6 +102,35 @@ class ProductsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Product->save($this->request->data)) {
+				
+				$producto = $this->request->data;
+				$medida_id = $producto['Product']['measure_id'];
+				$marca_id = $producto['Product']['brand_id'];
+				$imagen_id = $producto['Product']['image_id'];
+				$nombre = $producto['Product']['name'];
+				$numero = $producto['Product']['number'];
+				$cantidad = $producto['Product']['quantity'];
+				$descripcion = $producto['Product']['description'];
+				$destacado = $producto['Product']['featured'];
+				$precio = $producto['Product']['price'];
+				
+				$medidas = $this->Measure->find('first', array('conditions' => array("Measure.id" => $medida_id)));
+				$medida = $medidas['Measure']['type'];
+				$marcas = $this->Brand->find('first', array('conditions' => array("Brand.id" => $marca_id)));
+				$marca = $marcas['Brand']['name'];
+				$imagenes = $this->Image->find('first', array('conditions' => array("Image.id" => $imagen_id)));
+				$imagen = $imagenes['Image']['link'];
+				
+				$r = new HttpRequest('http://localhost/SupermercadoCake3/products/internalEdit', HttpRequest::METH_POST);
+				$r->setOptions(array('cookies' => array('lang' => 'de')));
+				$r->addPostFields(array('measure' => $medida, 'brand' => $marca, 'image' => $imagen, 'name' => $nombre, 'number' => $numero, 'quantity' => $cantidad, 'description' => $descripcion, 'featured' => $destacado, 'price' => $precio));
+				
+				try {
+    				$r->send()->getBody();
+				} catch (HttpException $ex) {
+    			echo $ex;
+				}
+				
 				$this->Session->setFlash(__('The product has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -263,20 +292,56 @@ class ProductsController extends AppController {
 		
 		//$product->measure_id = $measure_id;
 		//$product->brand_id = $brand_id;
-		$this->Product->id = $product['Product']['id'];
+		$producto_id = $product['Product']['id'];
+		//$this->Product->id = $product['Product']['id'];
+		$this->Product->id = $producto_id;
 		$this->Product->saveField('image_id', $image_id);
 		// $product->image_id = $image_id;		$this->Product->saveField('number',$numext);
 		$this->Product->saveField('description',$desext);
 		$this->Product->saveField('featured',$feaext);
 		$this->Product->saveField('price',$preext);
-		//$product->name = $nomext;
-		// $product->number = $numext;
-		// //$product->quantity = $canext;
-		// $product->description =  $desext;
-		// $product->featured = $feaext;
-		// $product->price = $preext;
-// 		
-		// $this->Product->save($product);
+		
+		$sep1 = explode(".", $preext);
+		if($sep1[0] == $preext){
+	 		$centavos = "00";
+		}else{ 
+	 		$centavos = $sep1[1];
+		}
+		$canext = $canext.$medext;
+		
+		$codigos = $this->Barcode->find('first', array('conditions' => array("Barcode.product_id" => $producto_id)));
+		$codigo = $codigos['Barcode']['number'];
+		
+		$etiqueta = $this->Label->find('all', array('conditions' => array("Label.product_id" => $producto_id)));
+		
+		$tuplas = $this->Label->find('count', array('conditions' => array("Label.product_id" => $producto_id)));
+		
+		//var_dump($cantidad);
+		
+		while($tuplas != 0) {
+			$tuplas = $tuplas - 1;
+			$direccion = $etiqueta[$tuplas]['Label']['address'];
+			
+			$paramandar = '@'.$direccion.';0;'.$desext.';'.$canext.';'.$preext.';'.$centavos.';'.$numext.';'.$codigo.'; #';
+			
+			// `mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
+			// $fp = fopen ("COM6:", "w+");
+			// sleep(2);
+    		// if (!$fp) {
+        		// echo "Uh-oh. Port 1 not opened.";
+    		// } else {                
+        		// fputs ($fp, $paramandar); 
+				// sleep(2);
+				// $respuesta = fgets($fp);
+// 
+				// while($respuesta == NULL) {
+					// fputs ($fp, $paramandar);
+					// sleep(2);
+					// $respuesta = fgets($fp);
+				// }
+			// fclose($fp);
+			// }
+		}
 	}
 
 	public function externalDelete() {

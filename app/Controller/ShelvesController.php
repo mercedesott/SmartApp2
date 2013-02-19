@@ -105,6 +105,6 @@ class ShelvesController extends AppController {
 			}
 		}
 		//Default deny
-		return false;
+		return parent::isAuthorized($user);
 	}
 }

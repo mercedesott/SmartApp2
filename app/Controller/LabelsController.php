@@ -114,31 +114,23 @@ class LabelsController extends AppController {
 				
 				$paramandar = '@'.$direccion.';0;'.$descripcion.';'.$cantidad.';'.$precio.';'.$centavos.';'.$numero.';'.$codigo.'; #';
 				
-				//var_dump($paramandar);
-				
-				`mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
-    			//var_dump($paramandar);
-    			$fp = fopen ("COM6:", "w+");
-				//var_dump($paramandar);	
-    			if (!$fp) {
-        			echo "Uh-oh. Port 1 not opened.";
-    			} else {                
-        			//$string  = "Send"; 
-        			//var_dump($paramandar);      
+				//`mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
+    			//$fp = fopen ("COM6:", "w+");
+				//sleep(2);
+    			//if (!$fp) {
+        			//echo "Uh-oh. Port 1 not opened.";
+    			//} else {                
         			//fputs ($fp, $paramandar); 
-					//var_dump($paramandar);
-					sleep(2);
-					$respuesta = fgets($fp);
-					
-					while($respuesta == NULL) {
-						fputs ($fp, $paramandar);
-						sleep(2);
-						$respuesta = fgets($fp);
-					}
-					//echo "Mand�:".$paramandar."<br>";
-					//$this->redirect(array('action' => 'esperar', 'param1' => $fp, 'param2' => $paramandar));
-					fclose($fp);
-				}
+					//sleep(2);
+					//$respuesta = fgets($fp);
+
+					//while($respuesta == NULL) {
+						//fputs ($fp, $paramandar);
+						//sleep(2);
+						//$respuesta = fgets($fp);
+					//}
+					//fclose($fp);
+				//}
 				
 				$this->Session->setFlash(__('The label has been saved'));
 				$this->redirect(array('action' => 'index'));
