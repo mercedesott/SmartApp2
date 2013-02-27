@@ -105,5 +105,6 @@
 			} ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Gondolas'), array('controller' => 'aisles', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nueva Gondola'), array('controller' => 'aisles', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ver Gondolas'), array('action' => 'gondolas'))?></li>
 	</ul>
 </div>

@@ -324,14 +324,13 @@ class ProductsController extends AppController {
 			
 			$paramandar = '@'.$direccion.';0;'.$desext.';'.$canext.';'.$preext.';'.$centavos.';'.$numext.';'.$codigo.'; #';
 			
-			// `mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
-			// $fp = fopen ("COM6:", "w+");
-			// sleep(2);
-    		// if (!$fp) {
-        		// echo "Uh-oh. Port 1 not opened.";
-    		// } else {                
-        		// fputs ($fp, $paramandar); 
-				// sleep(2);
+			`mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
+			$fp = fopen ("COM6:", "w+");
+    		if (!$fp) {
+        		echo "Uh-oh. Port 1 not opened.";
+    		} else {                
+        		fputs ($fp, $paramandar); 
+				sleep(2);
 				// $respuesta = fgets($fp);
 // 
 				// while($respuesta == NULL) {
@@ -339,8 +338,8 @@ class ProductsController extends AppController {
 					// sleep(2);
 					// $respuesta = fgets($fp);
 				// }
-			// fclose($fp);
-			// }
+			fclose($fp);
+			}
 		}
 	}
 

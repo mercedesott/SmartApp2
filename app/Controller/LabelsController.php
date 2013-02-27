@@ -13,7 +13,7 @@ class LabelsController extends AppController {
  * @return void
  */
  
- var $uses = array('Label', 'Product', 'Brand', 'Measure', 'Image', 'Barcode');
+ var $uses = array('Label', 'Product', 'Brand', 'Measure', 'Image', 'Barcode', 'Aisle', 'Shelf', 'Position');
  
 	public function index() {
 		$this->Label->recursive = 0;
@@ -207,5 +207,56 @@ class LabelsController extends AppController {
 		}
 		//Default deny
 		return parent::isAuthorized($user);
+	}
+	
+	public function gondolas() {
+		$aisles = $this->Aisle->find('list');
+		$this->set('aisles', $aisles);
+		if ($this->request->is('post')) {
+			$ids = $this->request->data;
+			$id = $ids['Aisle']['id'];
+			$res2 = $this->Aisle->find('first', array('conditions' => array("Aisle.id" => $id)));
+			$nombregondola = $res2['Aisle']['description'];
+			//var_dump($id);
+			$res1 = $this->Label->find('all', array('conditions' => array("Label.aisle_id" => $id)));
+			
+			$tuplas = $this->Label->find('count', array('conditions' => array("Label.aisle_id" => $id)));
+			$estantes = $this->Shelf->find('all');
+			$tuplasestantes = $this->Shelf->find('count');
+			$posiciones = $this->Position->find('all');
+			$tuplasposiciones = $this->Position->find('count');
+			$prodxposicion = array();
+			
+			for ($i=0; $i < $tuplasestantes; $i++) {
+				for ($j=0; $j < $tuplasposiciones; $j++) {
+					$resultado = $this->Label->find('all', array('conditions' => array("Label.aisle_id" => $id, "Label.shelf_id" => $estantes[$i]['Shelf']['id'], "Label.position_id" => $posiciones[$j]['Position']['id'])));
+					$tuplasresultado = $this->Label->find('count', array('conditions' => array("Label.aisle_id" => $id, "Label.shelf_id" => $estantes[$i]['Shelf']['id'], "Label.position_id" => $posiciones[$j]['Position']['id'])));
+					$tuplasresultado1 = $this->Label->find('count', array('conditions' => array("Label.aisle_id" => $id, "Label.shelf_id" => $estantes[$i]['Shelf']['id'], "Label.position_id" => $posiciones[$j]['Position']['id'])));
+					$estante = $estantes[$i]['Shelf']['id'];
+					$posicion = $posiciones[$j]['Position']['id'];
+					$prodxposicion[$estante][$posicion][$tuplasresultado1] = array();
+					while($tuplasresultado != 0) {
+						$tuplasresultado = $tuplasresultado - 1;
+						$image = $this->Image->find('first',array('conditions' => array('Image.id' => $resultado[$tuplasresultado]['Product']['image_id'])));
+						$idimagenetiqueta = $image['Image']['link'];
+						array_push($prodxposicion[$estante][$posicion][$tuplasresultado1], array('imagen' => $idimagenetiqueta, 'label' => $resultado[$tuplasresultado]['Label']['id']));
+					}
+				}
+			}
+			//var_dump($prodxposicion);
+			
+			$this->set('prodxposicion', $prodxposicion);
+			$this->set('id', $id);
+			$this->set('nombregondola', $nombregondola);
+			$this->set('tuplasestantes', $tuplasestantes);
+			$this->set('tuplasposiciones', $tuplasposiciones);
+			$this->set('estantes', $estantes);
+			$this->set('posiciones', $posiciones);
+			$this->render('gondola');
+		}
+	}
+
+	public function gondola() {
+		
 	}
 }
