@@ -51,6 +51,15 @@ class AppController extends Controller {
 		$this->Auth->allow('externalEdit');
 		$this->Auth->allow('externalDelete');
 		$this->Auth->allow('internalEdit');
+		$this->Auth->allow('externalAisleAdd');
+		$this->Auth->allow('externalAisleEdit');
+		$this->Auth->allow('externalAisleDelete');
+		$this->Auth->allow('externalPositionAdd');
+		$this->Auth->allow('externalPositionEdit');
+		$this->Auth->allow('externalPositionDelete');
+		$this->Auth->allow('externalShelfAdd');
+		$this->Auth->allow('externalShelfEdit');
+		$this->Auth->allow('externalShelfDelete');
 		$this->set('user',$this->Auth->user());
 		//$this->Auth->authorize= array('Controller');
 		

@@ -12,6 +12,9 @@ class AislesController extends AppController {
  *
  * @return void
  */
+ 
+ var $uses = array('Aisle', 'Shelf');
+ 
 	public function index() {
 		$this->Aisle->recursive = 0;
 		$this->set('aisles', $this->paginate());
@@ -105,5 +108,43 @@ class AislesController extends AppController {
 		}
 		//Default deny
 		return parent::isAuthorized($user);
+	}
+	
+	public function externalAisleAdd() {
+		$parametros = $this->request->data;
+		$descripcionexterna = $parametros['description'];
+		
+		$this->Aisle->create();
+		$this->Aisle->save(array('Aisle'=>array('description' => $descripcionexterna)));
+		
+		//$aisle = new Aisle();
+		//$aisle->description = $descripcionexterna;
+
+		//$this->Aisle->save($aisle);
+	}
+	
+	public function externalAisleEdit() {
+		$parametros = $this->request->data;
+		
+		$gondolavieja = $parametros['gondolavieja'];
+		$descripcion = $parametros['descripcion'];
+		
+		$tupla = $this->Aisle->find('first', array('conditions' => array("Aisle.description" => $gondolavieja)));
+		
+		$aisle_id = $tupla['Aisle']['id'];
+		$this->Aisle->id = $aisle_id;
+		$this->Aisle->saveField('description', $descripcion);
+	}
+	
+	public function externalAisleDelete() {
+		$parametros = $this->request->data;
+		
+		$descripcion = $parametros['descripcion'];
+		
+		$gondola = $this->Aisle->find('first', array('conditions' => array("Aisle.description" => $descripcion)));
+		
+		$this->Aisle->id = $gondola['Aisle']['id'];
+		$this->Aisle->delete();
+		
 	}
 }

@@ -253,7 +253,6 @@ class ProductsController extends AppController {
 		$preext = $parametros['price'];
 		
 		//var_dump($medext.$marext.$imaext);
-
 		
 		$measure = $this->Measure->find('first', array('conditions' => array("Measure.type" => $medext)));
 		$brand = $this->Brand->find('first', array('conditions' => array("Brand.name" => $marext)));
@@ -286,7 +285,6 @@ class ProductsController extends AppController {
 		}else{
 			$image_id = $image['Image']['id'];
 		}
-		
 		
 		$product = $this->Product->find('first', array('conditions' => array("Product.measure_id" => $measure_id, "Product.brand_id" => $brand_id, "Product.name" => $nomext, "Product.quantity" => $canext)));
 		
@@ -331,13 +329,13 @@ class ProductsController extends AppController {
     		} else {                
         		fputs ($fp, $paramandar); 
 				sleep(2);
-				// $respuesta = fgets($fp);
-// 
-				// while($respuesta == NULL) {
-					// fputs ($fp, $paramandar);
-					// sleep(2);
-					// $respuesta = fgets($fp);
-				// }
+				$respuesta = fgets($fp);
+
+				while($respuesta == NULL) {
+					fputs ($fp, $paramandar);
+					sleep(2);
+					$respuesta = fgets($fp);
+				}
 			fclose($fp);
 			}
 		}

@@ -107,4 +107,37 @@ class PositionsController extends AppController {
 		//Default deny
 		return parent::isAuthorized($user);
 	}
+	
+	public function externalPositionAdd() {
+		$parametros = $this->request->data;
+		$descripcionexterna = $parametros['description'];
+		
+		$this->Position->create();
+		$this->Position->save(array('Position'=>array('description' => $descripcionexterna)));
+	}
+	
+	public function externalPositionEdit() {
+		$parametros = $this->request->data;
+		
+		$posicionvieja = $parametros['posicionvieja'];
+		$descripcion = $parametros['descripcion'];
+		
+		$tupla = $this->Position->find('first', array('conditions' => array("Position.description" => $posicionvieja)));
+		
+		$position_id = $tupla['Position']['id'];
+		$this->Position->id = $position_id;
+		$this->Position->saveField('description', $descripcion);
+	}
+	
+	public function externalPositionDelete(){
+		$parametros = $this->request->data;
+		
+		$descripcion = $parametros['descripcion'];
+		
+		$posicion = $this->Position->find('first', array('conditions' => array("Position.description" => $descripcion)));
+		
+		$this->Position->id = $posicion['Position']['id'];
+		$this->Position->delete();
+		
+	}
 }

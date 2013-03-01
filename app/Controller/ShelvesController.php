@@ -107,4 +107,36 @@ class ShelvesController extends AppController {
 		//Default deny
 		return parent::isAuthorized($user);
 	}
+	
+	public function externalShelfAdd() {
+		$parametros = $this->request->data;
+		$descripcionexterna = $parametros['description'];
+		
+		$this->Shelf->create();
+		$this->Shelf->save(array('Shelf'=>array('description' => $descripcionexterna)));
+	}
+	
+	public function externalShelfEdit() {
+		$parametros = $this->request->data;
+		
+		$estantevieja = $parametros['estantevieja'];
+		$descripcion = $parametros['descripcion'];
+		
+		$tupla = $this->Shelf->find('first', array('conditions' => array("Shelf.description" => $estantevieja)));
+		
+		$estante_id = $tupla['Shelf']['id'];
+		$this->Shelf->id = $estante_id;
+		$this->Shelf->saveField('description', $descripcion);
+	}
+	
+	public function externalShelfDelete() {
+		$parametros = $this->request->data;
+		
+		$descripcion = $parametros['descripcion'];
+		
+		$estante = $this->Shelf->find('first', array('conditions' => array("Shelf.description" => $descripcion)));
+		
+		$this->Shelf->id = $estante['Shelf']['id'];
+		$this->Shelf->delete();
+	}
 }

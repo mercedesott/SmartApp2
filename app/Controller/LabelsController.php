@@ -78,7 +78,7 @@ class LabelsController extends AppController {
 				$numero1 = $etiqueta['Label']['number'];
 				$alive = $etiqueta['Label']['alive'];
 				
-				//var_dump($posicion_id.$estante_id.$producto_id.$gondola_id.$direccion.$numero.$alive);
+				//var_dump($posicion_id.$estante_id.$producto_id.$gondola_id.$direccion.$numero1.$alive);
 				
 				$producto = $this->Product->find('first', array('conditions' => array("Product.id" => $producto_id)));
 				$medida_id = $producto['Product']['measure_id'];
@@ -114,23 +114,23 @@ class LabelsController extends AppController {
 				
 				$paramandar = '@'.$direccion.';0;'.$descripcion.';'.$cantidad.';'.$precio.';'.$centavos.';'.$numero.';'.$codigo.'; #';
 				
-				//`mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
-    			//$fp = fopen ("COM6:", "w+");
-				//sleep(2);
-    			//if (!$fp) {
-        			//echo "Uh-oh. Port 1 not opened.";
-    			//} else {                
-        			//fputs ($fp, $paramandar); 
-					//sleep(2);
-					//$respuesta = fgets($fp);
+				`mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
+    			$fp = fopen ("COM6:", "w+");
+				sleep(2);
+    			if (!$fp) {
+        			echo "Uh-oh. Port 1 not opened.";
+    			} else {                
+        			fputs ($fp, $paramandar); 
+					sleep(2);
+					$respuesta = fgets($fp);
 
-					//while($respuesta == NULL) {
-						//fputs ($fp, $paramandar);
-						//sleep(2);
-						//$respuesta = fgets($fp);
-					//}
-					//fclose($fp);
-				//}
+					while($respuesta == NULL) {
+						fputs ($fp, $paramandar);
+						sleep(2);
+						$respuesta = fgets($fp);
+					}
+					fclose($fp);
+				}
 				
 				$this->Session->setFlash(__('The label has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -159,6 +159,70 @@ class LabelsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Label->save($this->request->data)) {
+				
+				$etiqueta = $this->request->data;
+				$posicion_id = $etiqueta['Label']['position_id'];
+				$estante_id = $etiqueta['Label']['shelf_id'];
+				$producto_id = $etiqueta['Label']['product_id'];
+				$gondola_id = $etiqueta['Label']['aisle_id'];
+				$direccion = $etiqueta['Label']['address'];
+				$numero1 = $etiqueta['Label']['number'];
+				$alive = $etiqueta['Label']['alive'];
+				
+				//var_dump($posicion_id.$estante_id.$producto_id.$gondola_id.$direccion.$numero1.$alive);
+				
+				$producto = $this->Product->find('first', array('conditions' => array("Product.id" => $producto_id)));
+				$medida_id = $producto['Product']['measure_id'];
+				$marca_id = $producto['Product']['brand_id'];
+				$imagen_id = $producto['Product']['image_id'];
+				$nombre = $producto['Product']['name'];
+				$numero = $producto['Product']['number'];
+				$cantidad = $producto['Product']['quantity'];
+				$descripcion = $producto['Product']['description'];
+				$destacado = $producto['Product']['featured'];
+				$precio = $producto['Product']['price'];
+				
+				//var_dump($medida_id.$marca_id.$imagen_id.$nombre.$numero.$cantidad.$descripcion.$destacado.$precio);
+				
+				$medidas = $this->Measure->find('first', array('conditions' => array("Measure.id" => $medida_id)));
+				$medida = $medidas['Measure']['type'];
+				$marcas = $this->Brand->find('first', array('conditions' => array("Brand.id" => $marca_id)));
+				$marca = $marcas['Brand']['name'];
+				$imagenes = $this->Image->find('first', array('conditions' => array("Image.id" => $imagen_id)));
+				$imagen = $imagenes['Image']['link'];
+				$codigos = $this->Barcode->find('first', array('conditions' => array("Barcode.product_id" => $producto_id)));
+				$codigo = $codigos['Barcode']['number'];
+				
+				//var_dump($medida.$marca.$imagen.$codigo);
+				
+				$sep1 = explode(".", $precio);
+				if($sep1[0] == $precio){
+	 				$centavos = "00";
+				}else{ 
+	 				$centavos = $sep1[1];
+				}
+				$cantidad = $cantidad.$medida;
+				
+				$paramandar = '@'.$direccion.';0;'.$descripcion.';'.$cantidad.';'.$precio.';'.$centavos.';'.$numero.';'.$codigo.'; #';
+				
+				`mode com6: BAUD=9600 PARITY=N data=8 stop=1 xon=off`;
+    			$fp = fopen ("COM6:", "w+");
+				sleep(2);
+    			if (!$fp) {
+        			echo "Uh-oh. Port 1 not opened.";
+    			} else {                
+        			fputs ($fp, $paramandar); 
+					sleep(2);
+					$respuesta = fgets($fp);
+
+					while($respuesta == NULL) {
+						fputs ($fp, $paramandar);
+						sleep(2);
+						$respuesta = fgets($fp);
+					}
+					fclose($fp);
+				}
+				
 				$this->Session->setFlash(__('The label has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
