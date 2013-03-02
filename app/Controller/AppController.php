@@ -60,6 +60,9 @@ class AppController extends Controller {
 		$this->Auth->allow('externalShelfAdd');
 		$this->Auth->allow('externalShelfEdit');
 		$this->Auth->allow('externalShelfDelete');
+		$this->Auth->allow('externalBarcodeAdd');
+		$this->Auth->allow('externalBarcodeEdit');
+		$this->Auth->allow('externalBarcodeDelete');
 		$this->set('user',$this->Auth->user());
 		//$this->Auth->authorize= array('Controller');
 		

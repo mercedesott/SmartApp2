@@ -12,6 +12,9 @@ class BarcodesController extends AppController {
  *
  * @return void
  */
+ 
+ var $uses = array('Barcode', 'Product');
+ 
 	public function index() {
 		$this->Barcode->recursive = 0;
 		$this->set('barcodes', $this->paginate());
@@ -110,5 +113,45 @@ class BarcodesController extends AppController {
 		}
 		//Default deny
 		return parent::isAuthorized($user);
+	}
+	
+	public function externalBarcodeAdd() {
+		$parametros = $this->request->data;
+		$numeroext = $parametros['numero'];
+		$productoext = $parametros['producto'];
+		
+		$producto = $this->Product->find('first', array('conditions' => array("Product.number" => $productoext)));
+		
+		$producto_id = $producto['Product']['id'];
+		
+		$this->Barcode->create();
+		$this->Barcode->save(array('Barcode'=>array('number' => $numeroext, 'product_id' => $producto_id)));
+		
+	}
+	
+	public function externalBarcodeEdit() {
+		$parametros = $this->request->data;
+		
+		$numeroext = $parametros['numero'];
+		$productoext = $parametros['producto_id'];
+		$codigoviejaext = $parametros['codigovieja'];
+		
+		$tupla = $this->Barcode->find('first', array('conditions' => array("Barcode.number" => $codigoviejaext)));
+		
+		$barcode_id = $tupla['Barcode']['id'];
+		$this->Barcode->id = $barcode_id;
+		$this->Barcode->saveField('number', $numeroext);
+	}
+	
+	public function externalBarcodeDelete() {
+		$parametros = $this->request->data;
+		
+		$numeroext = $parametros['numero'];
+		
+		$codigo = $this->Barcode->find('first', array('conditions' => array("Barcode.number" => $numeroext)));
+		
+		$this->Barcode->id = $codigo['Barcode']['id'];
+		$this->Barcode->delete();
+		
 	}
 }
