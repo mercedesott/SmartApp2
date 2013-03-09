@@ -147,4 +147,18 @@ class UsersController extends AppController {
 		//Default deny
 		return parent::isAuthorized($user);
 	}
+
+	public function actualizarBdd(){
+		$r = new HttpRequest('http://localhost/SupermercadoCake3/products/mandarBdd', HttpRequest::METH_POST);
+		$r->setOptions(array('cookies' => array('lang' => 'de')));
+		//$r->addPostFields(array('measure' => $medida, 'brand' => $marca, 'image' => $imagen, 'name' => $nombre, 'number' => $numero, 'quantity' => $cantidad, 'description' => $descripcion, 'featured' => $destacado, 'price' => $precio));
+		
+		try {
+    		$r->send()->getBody();
+		} catch (HttpException $ex) {
+    	echo $ex;
+		}
+		
+		$this->redirect(array('action' => 'index'));
+	}
 }

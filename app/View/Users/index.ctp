@@ -49,5 +49,6 @@
 		<li><?php echo $this->Html->link(__('Listar Tipos de Usuario'), array('controller' => 'user_types', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo Tipo de Usuario'), array('controller' => 'user_types', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Productos'), array('controller' => 'products', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Actualizar base de datos'), array('controller' => 'users', 'action' => 'actualizarBdd')); ?> </li>
 	</ul>
 </div>
