@@ -23,19 +23,19 @@
 
 /** General Style Info **/
 body {
-	background: #003d4c;
+	background: #5b0c02;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
 	margin: 0;
 }
 a {
-	color: #003d4c;
+	color: #525252;
 	text-decoration: underline;
 	font-weight: bold;
 }
 a:hover {
-	color: #367889;
+	color: #777;
 	text-decoration:none;
 }
 a img {
@@ -50,9 +50,10 @@ h1 {
 	color: #003d4c;
 	font-size: 100%;
 }
+/** en el background pongo el color de fondo del titulo dentro del cuerpo**/
 h2 {
 	background:#fff;
-	color: #e32;
+	color: #777;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 190%;
 }
@@ -80,23 +81,25 @@ p {
 #header{
 	padding: 10px 20px;
 }
+/** aca viene el color para la barrita chica donde dice logout y el color del link ese y cuando le pasas por arriba **/
 #header h1 {
 	line-height:20px;
-	background: #003d4c;
+	background: #5b0c02;
 	color: #fff;
 	padding: 0px 30px;
 }
 #header h1 a {
 	color: #fff;
-	background: #003d4c;
+	background: #5b0c02;
 	font-weight: normal;
 	text-decoration: none;
 }
 #header h1 a:hover {
 	color: #fff;
-	background: #003d4c;
+	background: #5b0c02;
 	text-decoration: underline;
 }
+/** aca en el background le pongo color a todo el cuerpo entre las dos barras **/
 #content{
 	background: #fff;
 	clear: both;
@@ -266,7 +269,7 @@ fieldset {
 	padding: 16px 10px;
 }
 fieldset legend {
-	color: #e32;
+	color: #333;
 	font-size: 160%;
 	font-weight: bold;
 }
@@ -353,18 +356,19 @@ input[type=submit] {
 	font-size: 110%;
 	width: auto;
 }
+/** aca puedo cambiar el color de los botones para formularios **/
 form .submit input[type=submit] {
-	background:#62af56;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#76BF6B), to(#3B8230));
-	background-image: -webkit-linear-gradient(top, #76BF6B, #3B8230);
-	background-image: -moz-linear-gradient(top, #76BF6B, #3B8230);
-	border-color: #2d6324;
+	background:#cf1b05;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#cf1b05), to(#5b0c02));
+	background-image: -webkit-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -moz-linear-gradient(top, #cf1b05, #5b0c02);
+	border-color: #5b0c02;
 	color: #fff;
 	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
 	padding: 8px 10px;
 }
 form .submit input[type=submit]:hover {
-	background: #5BA150;
+	background: #cf1b05;
 }
 /* Form errors */
 form .error {
@@ -504,25 +508,27 @@ p.error em {
 }
 
 /* Buttons and button links */
+
+/** aca se cambia el gradiente para los botones del menu y acciones **/
 input[type=submit],
 .actions ul li a,
 .actions a {
 	font-weight:normal;
 	padding: 4px 8px;
-	background: #dcdcdc;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dcdcdc));
-	background-image: -webkit-linear-gradient(top, #fefefe, #dcdcdc);
-	background-image: -moz-linear-gradient(top, #fefefe, #dcdcdc);
-	background-image: -ms-linear-gradient(top, #fefefe, #dcdcdc);
-	background-image: -o-linear-gradient(top, #fefefe, #dcdcdc);
-	background-image: linear-gradient(top, #fefefe, #dcdcdc);
-	color:#333;
-	border:1px solid #bbb;
+	background: #5b0c02;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#cf1b05), to(#5b0c02));
+	background-image: -webkit-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -moz-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -ms-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -o-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: linear-gradient(top, #cf1b05, #5b0c02);
+	color:#fff;
+	border:1px solid #5B0C02;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	text-decoration: none;
-	text-shadow: #fff 0px 1px 0px;
+/** text-shadow: #fff 0px 1px 0px; **/
 	min-width: 0;
 	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0px 1px 1px rgba(0, 0, 0, 0.2);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0px 1px 1px rgba(0, 0, 0, 0.2);
@@ -530,27 +536,29 @@ input[type=submit],
 	-webkit-user-select: none;
 	user-select: none;
 }
+/** aca le cambio el hover de los botones del menu **/
 .actions ul li a:hover,
 .actions a:hover {
-	background: #ededed;
+	background: #cf1b05;
 	border-color: #acacac;
 	text-decoration: none;
 }
+/** aca cambio el color y gradiente de los botones del menu cuando los clickeo **/
 input[type=submit]:active,
 .actions ul li a:active,
 .actions a:active {
-	background: #eee;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#dfdfdf), to(#eee));
-	background-image: -webkit-linear-gradient(top, #dfdfdf, #eee);
-	background-image: -moz-linear-gradient(top, #dfdfdf, #eee);
-	background-image: -ms-linear-gradient(top, #dfdfdf, #eee);
-	background-image: -o-linear-gradient(top, #dfdfdf, #eee);
-	background-image: linear-gradient(top, #dfdfdf, #eee);
+	background: #CF1B05;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#cf1b05), to(#5b0c02));
+	background-image: -webkit-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -moz-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -ms-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: -o-linear-gradient(top, #cf1b05, #5b0c02);
+	background-image: linear-gradient(top, #cf1b05, #5b0c02);
 	text-shadow: #eee 0px 1px 0px;
 	-moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
 	-webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
 	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
-	border-color: #aaa;
+	border-color: #5b0c02;
 	text-decoration: none;
 }
 
